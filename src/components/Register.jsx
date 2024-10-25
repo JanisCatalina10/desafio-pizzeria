@@ -60,15 +60,15 @@ const Register = () => {
   };
   return (
     <Form className='register-form' onSubmit={handleSubmit}>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Group className="wide-input" controlId="formBasicEmail">
       <Form.Label>Email address {error ? <p>Complete los campos</p> : null} </Form.Label>
       <Form.Control type="text" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
     </Form.Group>
-    <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Group className="wide-input" controlId="formBasicPassword">
       <Form.Label>Password</Form.Label>
       <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
     </Form.Group>
-    <Form.Group className="mb-3" controlId="formConfirmPassword">
+    <Form.Group className="wide-input" controlId="formConfirmPassword">
      <Form.Label>Confirm Password</Form.Label>
      <Form.Control type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)}/>
     </Form.Group>

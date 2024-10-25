@@ -5,3 +5,9 @@
     flex-direction: column;
     padding: 20px;
 }
+
+.wide-input{
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+}

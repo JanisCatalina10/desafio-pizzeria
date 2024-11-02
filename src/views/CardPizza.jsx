@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import './CardPizza.css'; 
 import { FormattedPrice } from '../utils/formattedprice';
 import CustomButton from '../components/CustomButton';
+import { nanoid } from 'nanoid'
 
 const CardPizza = ({name, price, ingredients, img}) => {
   const formattedPrice = FormattedPrice(price);
+  console.log(ingredients);
     return (
         <div className="card-container">
         <div className="cards">
@@ -16,7 +18,11 @@ const CardPizza = ({name, price, ingredients, img}) => {
               <hr />
               <Card.Text>
                 <h3>Ingredientes:</h3>
-                <p className='card-text'>{ingredients.join(', ')}</p>
+                <ul className='ing-list'>
+                {ingredients.map((ingredient) => (
+                  <li key={nanoid()}>{ingredient}</li> 
+                ))}
+              </ul>
               </Card.Text>
               <hr />
               <Card.Text>
@@ -38,7 +44,7 @@ const CardPizza = ({name, price, ingredients, img}) => {
 CardPizza.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+    ingredients: PropTypes.arrayOf(PropTypes.string).isRequired, 
     img: PropTypes.string.isRequired,
 };
 

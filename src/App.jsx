@@ -1,9 +1,10 @@
 
 import './App.css'
+import Cart from './components/Cart'
 {/*import Login from './components/Login'*/}
 {/*import Register from './components/Register'*/}
 {/*import Footer from './views/Footer'*/}
-import Home from './views/Home'
+{/*import Home from './views/Home'*/}
 import Navigation from './views/Navigation'
 
 function App() {
@@ -11,10 +12,11 @@ function App() {
   return (
     <>
       <Navigation />
-      <Home /> 
+      {/*<Home /> */}
       {/*<Register/>*/}
       {/*<Footer/>*/}
       {/*<Login/>*/}
+      <Cart/>
     </>
   )
 }

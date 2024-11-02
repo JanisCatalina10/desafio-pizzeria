@@ -2,6 +2,7 @@
     padding: 20px;
     max-width: 600px;
     margin: 0 auto;
+    margin-top: 10px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -30,15 +31,16 @@
 .cart-name {
     flex: 1;
     font-size: 1.2em;
+    font-weight: 600;
 }
 
 .cart-price {
     font-weight: bold;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-left: auto;
+    margin-right: 20px;
 }
 
-.cart-ing {
+.cart-list {
     list-style: none;
     font-size: 0.9em;
 }
@@ -46,6 +48,7 @@
 .cart-controls {
     display: flex;
     align-items: center;
+    margin-left: auto;
 }
 
 .control-button {
@@ -89,5 +92,5 @@
 }
 
 .pay-button:hover {
-    background-color: #555;
+    background-color:  #ffc107;
 }

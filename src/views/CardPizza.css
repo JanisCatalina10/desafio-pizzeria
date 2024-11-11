@@ -25,6 +25,11 @@
 .card-text{
   text-align: center;
 }
+
+.desc-text{
+  font-size: 1rem;
+  font-style: oblique;
+}
 .price-text{
   font-size: 1.2rem;
   font-weight: bolder;

@@ -34,7 +34,7 @@
 }
 
 .nav-items li:not(.right-item) a:hover {
-  background-color: #ffc107;
+  background-color: #FF6347;
   color: white;
 }
 

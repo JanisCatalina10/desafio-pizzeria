@@ -1,0 +1,41 @@
+.notfound-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://cdn.vectorstock.com/i/500p/63/92/404-error-page-not-found-sad-kawaii-cat-vector-51806392.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+}
+
+.notfound-content {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.notfound-container a {
+  text-decoration: none;
+  padding: 12px 25px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.notfound-container a:hover {
+  background-color: #e5533e;
+}

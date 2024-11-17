@@ -1,32 +1,40 @@
-import { FormattedPrice } from '../utils/formattedprice';
+import { Link } from "react-router-dom";
+import { FormattedPrice } from "../utils/formattedprice";
 
 const Navigation = () => {
   const total = 25000;
-  const token = false;
-  const formattedValue = FormattedPrice (total)
+  const token = true;
+  const formattedValue = FormattedPrice(total);
 
   return (
     <nav className="navbar">
       <ul className="nav-items">
-      <h2 className="navbar-title">¡Pizzeria Mamma Mia!</h2>
-        <li><a href="#Home">Home</a></li>
+        <h2 className="navbar-title">¡Pizzeria Mamma Mia!</h2>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
         {token ? (
           <>
-            <li><a href="#Profile">Profile</a></li>
-            <li><a href="#Logout">Logout</a></li>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
           </>
         ) : (
           <>
-            <li><a href="#Login">Login</a></li>
-            <li><a href="#Register">Register</a></li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
           </>
         )}
         <li className="right-item">
-          <a href="#Total">🛒 Total: {formattedValue}</a>
+          <Link to="/cart">🛒 Total: {formattedValue}</Link>
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

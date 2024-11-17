@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./CardPizza.css";
 import { FormattedPrice } from "../utils/formattedprice";
 import CustomButton from "../components/CustomButton";
+import { Link } from "react-router-dom";
 
 const CardPizza = ({ name, desc, price, ingredients, img, showMoreButton }) => {
   const formattedPrice = FormattedPrice(price);
@@ -39,7 +40,11 @@ const CardPizza = ({ name, desc, price, ingredients, img, showMoreButton }) => {
               <p className="price-text">Precio: {formattedPrice}</p>
             </Card.Text>
             <div className="button-container">
-              {showMoreButton && <CustomButton text="Ver más" />}
+              {showMoreButton && (
+                <Link to="/pizza/001">
+                  <CustomButton text="Ver más" />{" "}
+                </Link>
+              )}
               <CustomButton text="Añadir" />
             </div>
           </Card.Body>

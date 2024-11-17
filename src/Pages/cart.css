@@ -82,7 +82,7 @@
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #ff6347;
+  background-color: #ff6b6b ;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -92,5 +92,5 @@
 }
 
 .pay-button:hover {
-  background-color: #ffc107;
+  background-color: #ff4c4c;
 }

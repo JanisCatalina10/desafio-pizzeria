@@ -61,16 +61,17 @@
 }
 
 .pizza-btn {
-  background-color: #ffc107;
+  background-color:#ff6b6b;
   color: white;
   padding: 15px 30px;
   font-size: 1.2rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition:background-color 0.3s ease, transform 0.3s ease;
 }
 
 .pizza-btn:hover {
-  background-color: #ff6347;
+  background-color: #ff4c4c;
+  transform: scale(1.05);
 }

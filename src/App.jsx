@@ -1,3 +1,4 @@
+import CartProvider  from "./context/CartContext";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home";
@@ -10,10 +11,12 @@ import Navigation from "./views/Navigation";
 import Footer from "./views/Footer";
 import NotFound from "./Pages/Notfound";
 
+
 function App() {
   return (
     <>
-      <div className="app-container">
+    <CartProvider>
+    <div className="app-container">
         <Navigation />
         <div className="content">
           <Routes>
@@ -30,6 +33,8 @@ function App() {
           <Footer />
         </div>
       </div>
+    </CartProvider>
+      
     </>
   );
 }

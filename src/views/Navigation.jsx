@@ -1,8 +1,9 @@
+import { useCart } from "../context/UseCart"; 
 import { Link } from "react-router-dom";
 import { FormattedPrice } from "../utils/formattedprice";
 
 const Navigation = () => {
-  const total = 25000;
+  const { total } = useCart();
   const token = true;
   const formattedValue = FormattedPrice(total);
 

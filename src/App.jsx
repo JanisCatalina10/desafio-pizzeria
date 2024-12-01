@@ -10,11 +10,13 @@ import Profile from "./Pages/Profile";
 import Navigation from "./views/Navigation";
 import Footer from "./views/Footer";
 import NotFound from "./Pages/Notfound";
+import { UserProvider } from "./context/UserContext";
 
 
 function App() {
   return (
     <>
+    <UserProvider>
     <CartProvider>
     <div className="app-container">
         <Navigation />
@@ -24,7 +26,7 @@ function App() {
             <Route path="/Register" element={<Register />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Cart" element={<Cart />} />
-            <Route path="/Pizza/001" element={<Pizza />} />
+            <Route path="/Pizza/:id" element={<Pizza />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -34,7 +36,7 @@ function App() {
         </div>
       </div>
     </CartProvider>
-      
+    </UserProvider>
     </>
   );
 }

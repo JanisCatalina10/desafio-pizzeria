@@ -2,41 +2,56 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
-  padding: 20px;
+  margin: 30px auto;
+  padding: 40px;
   border: 2px solid #ddd;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  transition: box-shadow 0.3s ease;
+}
+
+.pizza-container:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .pizza-name {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #d32f2f;
+  text-transform: capitalize;
 }
 
 .pizza-img {
   width: 100%;
-  max-width: 450px;
+  max-width: 600px;
   height: auto;
-  border-radius: 10px;
+  border-radius: 15px;
   margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.pizza-img:hover {
+  transform: scale(1.05);
 }
 
 .pizza-desc {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
   font-style: oblique;
-  max-width: 60%;
-  word-wrap: break-word;
+  font-weight: 400;
+  color: #333;
+  max-width: 80%;
 }
 
 .pizza-ing {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 10px;
+  color: #388e3c;
 }
 
 .ing-list {
@@ -45,33 +60,54 @@
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 .ing-list li {
   font-size: 1rem;
   color: #555;
+  font-weight: 500;
 }
 
 .pizza-price {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #d32f2f;
 }
 
 .pizza-btn {
-  background-color:#ff6b6b;
+  background-color: #ff6b6b;
   color: white;
-  padding: 15px 30px;
-  font-size: 1.2rem;
+  padding: 15px 40px;
+  font-size: 1.4rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
-  transition:background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 20px;
 }
 
 .pizza-btn:hover {
   background-color: #ff4c4c;
+  transform: scale(1.05);
+}
+
+.back-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  margin-top: 15px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #388e3c;
   transform: scale(1.05);
 }

@@ -1,10 +1,11 @@
 import { useCart } from "../context/UseCart"; 
 import { Link } from "react-router-dom";
 import { FormattedPrice } from "../utils/formattedprice";
+import { useUser } from "../context/UseUser";
 
 const Navigation = () => {
+  const { token, logout } = useUser();
   const { total } = useCart();
-  const token = true;
   const formattedValue = FormattedPrice(total);
 
   return (
@@ -18,6 +19,9 @@ const Navigation = () => {
           <>
             <li>
               <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+            <button className="logout-btn" onClick={logout}>Logout</button>
             </li>
           </>
         ) : (

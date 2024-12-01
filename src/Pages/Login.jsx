@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UseUser";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Swal from "sweetalert2";
 import "./Login.css";
 
 const Login = () => {
+  const { token, login } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) {
+      navigate("/"); 
+    }
+  }, [token, navigate]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email.trim() === "" || password.trim() === "") {
@@ -29,6 +40,8 @@ const Login = () => {
       });
       return;
     }
+    login();
+    navigate("/");
   };
   return (
     <Form className="login-form" onSubmit={handleSubmit}>

@@ -94,3 +94,16 @@
 .pay-button:hover {
   background-color: #ff4c4c;
 }
+.pay-button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  border: none;
+}
+
+.auth-warning {
+  color: #d9534f; 
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}

@@ -1,10 +1,20 @@
 import axios from "axios";
 import "./Profile.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UseUser";
 
 const Profile = () => {
   const [avatar, setAvatar] = useState(null);
   const [email, setEmail] = useState(null);
+  const { token, logout } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login"); 
+    }
+  }, [token, navigate]);
 
   useEffect(() => {
     const fetchAvatar = async () => {
@@ -33,7 +43,14 @@ const Profile = () => {
       <p>{email}</p>
       <button
         className="logout-button"
-        onClick={() => alert("¿Estás seguro de que quieres cerrar sesión?")}
+        onClick={() => {
+          const confirmLogout = window.confirm("¿Estás seguro de que quieres cerrar sesión?");
+          
+          if (confirmLogout) {
+            logout(); 
+            navigate("/login"); 
+          }
+        }}
       >
         Cerrar Sesión
       </button>

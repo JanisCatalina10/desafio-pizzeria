@@ -1,4 +1,4 @@
-import { useCart } from "../context/UseCart"; 
+import { useCart } from "../context/UseCart";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
 import "./CardPizza.css";
@@ -6,7 +6,15 @@ import { FormattedPrice } from "../utils/formattedprice";
 import CustomButton from "../components/CustomButton";
 import { Link } from "react-router-dom";
 
-const CardPizza = ({ id, name, desc, price, ingredients, img, showMoreButton }) => {
+const CardPizza = ({
+  id,
+  name,
+  desc,
+  price,
+  ingredients,
+  img,
+  showMoreButton,
+}) => {
   const { addToCart } = useCart();
   const formattedPrice = FormattedPrice(price);
   console.log(ingredients);
@@ -43,11 +51,18 @@ const CardPizza = ({ id, name, desc, price, ingredients, img, showMoreButton }) 
             </Card.Text>
             <div className="button-container">
               {showMoreButton && (
-                <Link to="/pizza/001">
+                <Link to={`/pizza/${id}`}>
                   <CustomButton text="Ver más" />{" "}
                 </Link>
               )}
-              <button className="addMore-btn" onClick={() => {addToCart({ id, name, price, ingredients, img });}} >Añadir</button>
+              <button
+                className="addMore-btn"
+                onClick={() => {
+                  addToCart({ id, name, price, ingredients, img });
+                }}
+              >
+                Añadir
+              </button>
             </div>
           </Card.Body>
         </Card>
@@ -57,7 +72,7 @@ const CardPizza = ({ id, name, desc, price, ingredients, img, showMoreButton }) 
 };
 
 CardPizza.propTypes = {
-  id: PropTypes.number.isRequired, 
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

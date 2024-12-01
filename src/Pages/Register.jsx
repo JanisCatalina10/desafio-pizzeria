@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Swal from "sweetalert2";
 import "./Register.css";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UseUser";
+
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { token } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (token) {
+      navigate("/"); 
+    }
+  }, [token, navigate]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,7 +71,9 @@ const Register = () => {
       icon: "success",
       confirmButtonText: "Aceptar",
       showConfirmButton: true,
-    });
+    }).then(() => {
+    navigate("/"); 
+  });
     setError(false);
   };
   return (

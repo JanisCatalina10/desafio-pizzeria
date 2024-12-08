@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UseUser";
 import Button from "react-bootstrap/Button";
@@ -7,51 +7,58 @@ import Swal from "sweetalert2";
 import "./Login.css";
 
 const Login = () => {
-  const { token, login } = useUser();
+  const { loginRequest } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (token) {
-      navigate("/"); 
-    }
-  }, [token, navigate]);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email.trim() === "" || password.trim() === "") {
-      setError(true);
+
+    if (!email || !password) {
       Swal.fire({
-        title: "Faltan datos",
-        text: "Debe ingresar todos los datos",
+        title: "Campos vacíos",
+        text: "Por favor, completa todos los campos.",
         icon: "warning",
-        showConfirmButton: false,
       });
       return;
     }
-    if (password.length < 6) {
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
       Swal.fire({
-        title: "Contraseña incorrecta",
-        text: "La contraseña debe tener al menos 6 caracteres",
+        title: "Email inválido",
+        text: "Por favor, ingresa un correo electrónico válido.",
         icon: "error",
-        showConfirmButton: true,
       });
       return;
     }
-    login();
-    navigate("/");
+
+    try {
+      await loginRequest(email, password);
+
+      Swal.fire({
+        title: "Login exitoso",
+        icon: "success",
+      });
+
+      navigate("/");
+    } catch {
+      Swal.fire({
+        title: "Error de autenticación",
+        text: "Email o contraseña incorrectos.",
+        icon: "error",
+      });
+    }
   };
+
   return (
     <Form className="login-form" onSubmit={handleSubmit}>
       <Form.Group className="wide-input" controlId="formBasicEmail">
-        <Form.Label>
-          Email address {error ? <p>Complete los campos</p> : null}{" "}
-        </Form.Label>
+        <Form.Label>Email</Form.Label>
         <Form.Control
-          type="text"
+          type="email"
           placeholder="Enter email"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </Form.Group>
@@ -60,6 +67,7 @@ const Login = () => {
         <Form.Control
           type="password"
           placeholder="Password"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Group>

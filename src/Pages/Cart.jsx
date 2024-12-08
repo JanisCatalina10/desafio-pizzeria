@@ -1,11 +1,44 @@
 import { useCart } from "../context/UseCart";
 import { useUser } from "../context/UseUser";
 import { FormattedPrice } from "../utils/formattedprice";
+import axios from "axios";
+import Swal from "sweetalert2";
 import "./cart.css";
 
 const Cart = () => {
   const { cart, addToCart, removeFromCart, total } = useCart();
   const { token } = useUser();
+
+  const handleCheckout = async () => {
+    if (!token) {
+      Swal.fire({
+        title: "Error",
+        text: "Debes iniciar sesión para realizar el pago",
+        icon: "error",
+      });
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/checkouts",
+        { cart },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (response.status === 200) {
+        Swal.fire({
+          title: "Compra exitosa",
+          text: "Gracias por tu compra",
+          icon: "success",
+        });
+      }
+    } catch {
+      Swal.fire({
+        title: "Error",
+        text: "No se pudo realizar el pago",
+        icon: "error",
+      });
+    }
+  };
 
   return (
     <div className="cart">
@@ -48,7 +81,7 @@ const Cart = () => {
         ))}
       </div>
       <h3 className="cart-total">Total: {FormattedPrice(total)}</h3>
-      <button className="pay-button" disabled={!token}>
+      <button className="pay-button" onClick={handleCheckout} disabled={!token}>
         Pagar
       </button>{" "}
       {!token && (
